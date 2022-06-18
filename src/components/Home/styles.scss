@@ -1,0 +1,325 @@
+main {
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin-bottom: 10%;
+    // margin: 20% 0 0 0;
+  
+    .counter {
+      margin: 25% 0 0 0;
+    }
+  
+    img {
+      margin-left: 2rem;
+    }
+  
+    @media (max-width: 1170px) {
+      flex-direction: column;
+  
+      img {
+        margin: 2rem 0;
+        width: 400px;
+      }
+    }
+  
+    @media (max-width: 500px) {
+      flex-direction: column;
+  
+      img {
+        margin: 2rem 0;
+        width: 300px;
+      }
+    }
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Licorice&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+  
+  .home {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+    div {
+      margin-top: 10%;
+      margin-bottom: 30%;
+    }
+    h1 {
+      font-size: 100px;
+      text-align: center;
+      font-family: 'Fleur De Leah', cursive;
+      color: #4e8f7c;
+    }
+    h4 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      color: #4e8f7c;
+    }
+    h6 {
+      font-family: 'Licorice', cursive;
+      text-align: center;
+      font-size: 40px;
+      -ms-transform: rotate(-8deg); /* IE 9 */
+      transform: rotate(-8deg);
+      color: #4e8f7c;
+      margin-top: 30%;
+    }
+  }
+  
+  .info-section {
+    height: 100vh;
+    text-align: center;
+    // margin: 20% 0 0 0;
+    h1 {
+      font-size: 48px;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 15%;
+      padding-top: 20%;
+    }
+    h2 {
+      font-size: 35px;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 10%;
+    }
+    h3 {
+      font-size: 30px;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 5%;
+    }
+    p {
+      font-size: 18px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0 5% 0 5%;
+    }
+  }
+  
+  .info-location {
+    height: 100vh;
+    text-align: center;
+    // margin: 20% 0 0 0;
+    .map {
+      margin-bottom: 10%;
+    }
+    p {
+      font-size: 18px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0 5% 0 5%;
+    }
+    .adress-lines {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 5% 0 5%;
+      p {
+        font-size: 16px;
+        text-align: start;
+        padding: 0 5% 0 10%;
+      }
+      img {
+        margin: 0 5% 0 10%;
+      }
+    }
+  }
+  
+  .info-bus {
+    height: 60vh;
+    p {
+      font-size: 18px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .img-bus {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 13%;
+      margin-bottom: 10%;
+    }
+    .row-bus {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  
+  .invitation-section {
+    height: 85vh;
+    .img-love-hands {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 13%;
+      margin-bottom: 10%;
+    }
+    h2 {
+      font-size: 35px;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      margin-bottom: 10%;
+      color: #4E8F7C;
+    }
+    p {
+      font-size: 15px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0 5% 0 5%;
+      text-align: center;
+    }
+    .button-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 13%;
+      margin-bottom: 10%;
+    }
+    button {
+      font-size: 1rem;
+      max-width: 160px;
+      width: 100%;
+      padding: 0.8rem 2rem;
+      background: #faedcd;
+      color: #4E8F7C;
+      border: none;
+      border-radius: 0.8rem;
+      cursor: pointer;
+      transition: filter 0.3s;
+  
+      &:hover {
+        filter: brightness(0.7);
+      }
+    }
+  }
+  
+  .gift-section {
+    height: 87vh;
+    .img-plane {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 13%;
+      margin-bottom: 10%;
+    }
+    h4 {
+      font-size: 18px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0 5% 0 5%;
+      text-align: center;
+    }
+    p {
+      font-size: 18px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0 5% 0 5%;
+      text-align: center;
+    }
+  }
+  
+  .dress-code-section {
+    height: 70vh;
+    .img-dress-code {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 13%;
+      margin-bottom: 10%;
+    }
+    h4 {
+      font-size: 35px;
+      font-family: 'Playfair Display', serif;
+      padding: 0 5% 10% 5%;
+      text-align: center;
+      color: #4e8f7c;
+    }
+    h5 {
+      font-size: 40px;
+      font-family: 'Licorice', cursive;
+      text-align: center;
+      padding: 0 5% 5% 5%;
+    }
+    p {
+      font-size: 18px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0 5% 0 5%;
+      text-align: center;
+    }
+  }
+  
+  .playlist-section {
+    height: 100vh;
+    .img-playlist {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 13%;
+      margin-bottom: 10%;
+    }
+    h4 {
+      font-size: 35px;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      margin-bottom: 10%;
+      color: #4E8F7C;
+    }
+    p {
+      font-size: 15px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0 5% 0 5%;
+      text-align: center;
+    }
+    .button-playlist {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 13%;
+      margin-bottom: 10%;
+    }
+    button {
+      font-size: 1rem;
+      max-width: 160px;
+      width: 100%;
+      padding: 0.8rem 2rem;
+      background: #faedcd;
+      color: #4E8F7C;
+      border: none;
+      border-radius: 0.8rem;
+      cursor: pointer;
+      transition: filter 0.3s;
+  
+      &:hover {
+        filter: brightness(0.7);
+      }
+    }
+  }
+  
+  .footer {
+    padding-top: 15%;
+    div {
+      display: flex;
+      justify-content: center;
+      span {
+        padding: 0 2% 0 2%;
+        font-size: 3rem;
+      }
+    }
+    .credits {
+      margin-top: 13%;
+      height: 60px;
+      background-color: #303030;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h6 {
+        font-size: 10px;
+        color: #faedcd;
+        text-align: center;
+        padding: 0;
+      }
+    }
+  }
+  
