@@ -64,6 +64,7 @@ export const Home = () => {
   // Run scrollrender once page is loaded.
   useEffect(() => {
     requestAnimationFrame(() => skewScrolling());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //set the height of the body.
