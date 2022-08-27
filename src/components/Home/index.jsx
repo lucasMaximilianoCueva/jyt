@@ -1,68 +1,189 @@
-import './styles.scss';
+import "./styles.scss";
 
-import { Counter } from '../Counter/Index';
-import bus from '../../assets/img/autobus.png';
-import iconCool from '../../assets/img/icon-cool.png';
-import locationIcon from '../../assets/img/location.png';
-import loveHands from '../../assets/img/love-hands.png';
-import mapa from '../../assets/img/mapa1.png';
-import plane from '../../assets/img/plane.png';
-import playlist from '../../assets/img/playlist.png';
+import { useEffect, useRef, useState } from "react";
+
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Counter } from "../Counter/Index";
+import backgFooter from "../../assets/img/backg-footer.png";
+import branch from "../../assets/img/FLOWER.png";
+import bus from "../../assets/img/bus.png";
+import copy from "../../assets/img/cop.png";
+import dance from "../../assets/img/dance.png";
+import faceLogo from "../../assets/img/FacebookLogo.png";
+import flowerRegalo from "../../assets/img/hojamarron.png";
+import flowerSingle from "../../assets/img/Flower-small.png";
+import flowerTop from "../../assets/img/flower-top-left.png";
+import instaLogo from "../../assets/img/InstagramLogo.png";
+import invitacionLogo from "../../assets/img/ubicacion.png";
+import mapa from "../../assets/img/mapa_pin.png";
+import photoUs from "../../assets/img/lucas-y-yo.jpeg"
+import regaloicon from "../../assets/img/regalo.png";
+import shoe from "../../assets/img/shoe.png";
+import tikLogo from "../../assets/img/TiktokLogo.png";
+import useWindowSize from "../../hooks/useWindowSize";
 
 export const Home = () => {
+  const [state, setState] = useState({
+    value: "000000000000000000001",
+    copied: false,
+  });
+  const [state2, setState2] = useState({
+    value: "000000000000000000002",
+    copied: false,
+  });
+  const [state3, setState3] = useState({
+    value: "000000000000000000003",
+    copied: false,
+  });
+
+  const onCopy = () => {
+    setState({ copied: true });
+  };
+  const onCopy2 = () => {
+    setState2({ copied: true });
+  };
+  const onCopy3 = () => {
+    setState3({ copied: true });
+  };
+
+  //Hook to grab window size
+  const size = useWindowSize();
+
+  // Ref for parent div and scrolling div
+  const scrollContainer = useRef();
+  const scrollImage = useRef();
+
+  // Configs
+  const data = {
+    ease: 0.1,
+    current: 0,
+    previous: 0,
+    rounded: 0,
+  };
+
+  // Run scrollrender once page is loaded.
+  useEffect(() => {
+    requestAnimationFrame(() => skewScrolling());
+  }, []);
+
+  //set the height of the body.
+  useEffect(() => {
+    setBodyHeight();
+  }, [size.height]);
+
+  //Set the height of the body to the height of the scrolling div
+  const setBodyHeight = () => {
+    document.body.style.height = `${
+      scrollContainer.current.getBoundingClientRect().height
+    }px`;
+  };
+
+  // Scrolling
+  const skewScrolling = () => {
+    //Set Current to the scroll position amount
+    data.current = window.scrollY;
+    // Set Previous to the scroll previous position
+    data.previous += (data.current - data.previous) * data.ease;
+    // Set rounded to
+    data.rounded = Math.round(data.previous * 100) / 100;
+
+    // Difference between
+    const difference = data.current - data.rounded;
+    const acceleration = difference / size.width;
+    const velocity = +acceleration;
+    const skew = velocity * 7.5;
+
+    //Assign skew and smooth scrolling to the scroll container
+    scrollContainer.current.style.transform = `translate3d(0, -${data.rounded}px, 0) skewY(${skew}deg)`;
+
+    //loop vai raf
+    requestAnimationFrame(() => skewScrolling());
+
+    scrollImage.current.style.transform = `opacity: 1`;
+    scrollImage.current.style.transform = `transform: rotateZ(-2deg)`;
+  };
+  
+
   return (
-    <>
+    <div ref={scrollContainer}>
       <main id="main-section">
-        <div className="counter">
-          <Counter />
-          {/* <button onClick={notify}>Inscreva-se</button> */}
-        </div>
+        <img className="img-flower" src={flowerTop} alt="flower" width={20} />
 
         <div className="home">
           <div>
-            <h1>Jesica</h1>
-            <h4>&</h4>
-            <h1>Lucas</h1>
+            <h1>
+              Jesica <br /> & <br /> Lucas
+            </h1>
             <h6>
-              ¡Siiiiiiiiiii,
-              <br /> Nos casamos!
+              ¡Siiii, Nos <br /> Casamooos!
             </h6>
           </div>
         </div>
+
+        <div className="background-counter">
+          {/* <button onClick={notify}>Inscreva-se</button> */}
+        </div>
+        <div className="counter2">
+          <Counter />
+          {/* <button onClick={notify}>Inscreva-se</button> */}
+        </div>
+        {/* <div>
+          <img className="img-mountain" src={mountain} alt="flower" width={20} />
+        </div> */}
       </main>
 
       <div id="Bienvenidos!" className="info-section">
         <div>
-          <h1>14 Enero 2023</h1>
-          <h2>
-            Ceremonia <br /> desde 11:30hs
-          </h2>
-          <h3>
-            Quinta <br /> "Selva Madre"
-          </h3>
+          <h1>14&nbsp; Enero 2023</h1>
+          <h2>Ceremonia desde 11:30hs.</h2>
+          <div>
+            <img className="flower-small" src={flowerSingle} alt="flower" />
+            <h3>
+              Quinta <br /> "Selva Madre"
+            </h3>
+          </div>
           <p>
-            ¡Estamos super felices! Nos sentimos en las nubes y queremos
-            compartir con vos todo nuestro amor. Por eso estamos preparando con
-            mucho cariño y esfuerzo un casamiento en el que te lo pasarás
-            genial. Algo super importante, confirmanos lo antes posible por
-            favor, que así organizarlo todo nos será mucho más fácil. ¡Esperamos
-            que disfruten tanto como nosotros, un abrazo muuuy grande! El día de
-            la fiesta compartinos tus fotos del evento con
+            ¡Estamos super felices! Nos <br /> sentimos en las nubes y queremos
+            <br /> compartir con vos todo nuestro <br /> amor. Por eso estamos
+            preparando <br /> con mucho cariño y esfuerzo un <br /> casamiento
+            en el que te lo pasarás <br />
+            genial. <br /> <br /> Algo super importante, <br /> confirmanos lo
+            antes posible por <br />
+            favor, que así organizarlo todo nos <br /> será mucho más fácil.{" "}
+            <br /> <br /> ¡Esperamos que disfruten tanto <br /> como nosotros,
+            un abrazo muuuy <br /> grande! <br /> El día de la fiesta
+            compartinos tus <br /> fotos del evento con
           </p>
+        </div>
+        <div className="redes-icon">
+          <img src={instaLogo} alt="" width={50} />
+          <img src={faceLogo} alt="" width={50} />
+          <img src={tikLogo} alt="" width={50} />
+        </div>
+        <div className="hashtag-p">
+          <p>#shesylu23</p>
         </div>
       </div>
 
       <div id="ubicacion" className="info-location">
-        <div>
-          <img className="map" src={mapa} width={200} alt="img"></img>
+        <div className="info-location-container">
+          <img
+            className="location-branch"
+            src={branch}
+            alt="decoration branch"
+          />
+          <img className="map" src={invitacionLogo} width={100} alt="img"></img>
+          <h1>Ubicación</h1>
           <p>
-            Realizaremos la ceremonia alegórica para los que no pudieron
-            acompañarnos en el civil a las 11:30hs. Luego empezamos con la
-            fiesta en el mismo lugar! Te dejamos la ubicación y algunos medios
-            de transporte para guiarte.
+            Realizaremos la ceremonia <br /> alegórica para los que no pudieron{" "}
+            <br />
+            acompañarnos en el civil a las <br /> 11:30hs. Luego empezamos con
+            la <br />
+            fiesta en el mismo lugar! <br /> Te dejamos la ubicación y algunos{" "}
+            <br /> medios de transporte para guiarte.
           </p>
           <div className="adress-lines">
-            <img src={locationIcon} width={40} alt="img"/>
+            <img src={mapa} width={70} alt="img" />
             <p>
               <b>María A. de Lescano 221, Ministro Rivadavia.</b> <br /> E/ 25
               de mayo y Mariano Acosta.
@@ -80,12 +201,12 @@ export const Home = () => {
 
       <div className="info-bus">
         <div className="img-bus">
-          <img src={bus} width={150} alt="img"/>
+          <img src={bus} width={70} alt="img" />
         </div>
         <div className="row-bus">
           <div>
             <p>
-              <b>510 - 2</b> <br /> República Y <br /> Espora (X E. De <br />{' '}
+              <b>510 - 2</b> <br /> República Y <br /> Espora (X E. De <br />{" "}
               Rosas)
             </p>
           </div>
@@ -98,7 +219,7 @@ export const Home = () => {
         <div className="row-bus">
           <div>
             <p>
-              <b>510 - 3</b> <br /> B° Libertad X 25 <br /> De Mayo <br />{' '}
+              <b>510 - 3</b> <br /> B° Libertad X 25 <br /> De Mayo <br />{" "}
               <b>
                 ¡Te deja en la <br /> esquina!
               </b>
@@ -112,57 +233,86 @@ export const Home = () => {
         </div>
       </div>
 
-      <div id="asistencia" className="invitation-section">
-        <div className="img-love-hands">
-          <img src={loveHands} width={200} alt="img"/>
-        </div>
-        <div>
-          <h2>
-            ¿Nos acompañas o <br /> te lo perdés?
-          </h2>
-          <p>
-            Para confirmar tu asistencia sólo tenés que escribirnos a whatsapp
-            1137016891 para avisarnos si venís a disfrutar con nosotrxs o te lo
-            perdeees!!! Dato importante si precisas algún menú especial como
-            vegetariano, vegano, celíaco, diabético o no te gusta el asado y
-            preferís pastas, avisanos!
-          </p>
-        </div>
-        <div className="button-contact">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = 'https://wa.me/message/Z4RYHFSMEJB2C1';
-            }}
-          >
-            <i className="fa-brands fa-whatsapp"></i> Confirmar
-          </button>
-        </div>
+      <div className="invitation-title">
+        <h2>
+          ¿Nos acompañas <br /> o te lo perdés?
+        </h2>
       </div>
 
+      <div className="container-lucas-y-yo">
+          <img src={photoUs} ref={scrollImage} className="lucas-y-yo is-visible" alt="" />
+      </div>
+
+      {/* <div id="asistencia" className="parallax">
+
+        <div className="parallax">
+          <p>
+            Para confirmar tu asistencia sólo <br /> tenés que escribirnos a whatsapp <br />
+            1137016891 para avisarnos si venís a <br /> disfrutar con nosotrxs o te lo <br />
+            perdeees!!
+          </p>
+          <div className="button-contact">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "https://wa.me/message/Z4RYHFSMEJB2C1";
+              }}
+            >
+              <i className="fa-brands fa-whatsapp"></i> Confirmar
+            </button>
+          </div>
+        </div>
+      </div> */}
+
       <div id="regalo" className="gift-section">
+        <img className="flower-regalo" src={flowerRegalo} alt="flower"></img>
         <div className="img-plane">
-          <img src={plane} width={200} alt="img"/>
+          <img src={regaloicon} width={80} alt="img" />
         </div>
         <div>
+          <h3>Regalo</h3>
           <h4>
-            Para nosotros lo más importante es poder compartir con vos nuestro
-            gran día. Y como sabrás no necesitamos nada más para casa, pero si
-            nos queremos ir de Luna de Miel♥. Y si deseas nos podés ayudar a
-            cumplir nuestro próximo sueño ✈️ por los siguiente medios:
+            Para nosotros lo más importante <br /> es poder compartir con vos{" "}
+            <br /> nuestro gran día. Y como sabrás no <br /> necesitamos nada
+            más para casa, <br /> pero si nos queremos ir de Luna de <br />{" "}
+            Miel♥. <br /> Y si deseas nos podés ayudar a <br />
+            cumplir nuestro próximo sueño ✈️ <br /> por los siguiente medios:
           </h4>
+          <p>CBU:</p>
+          <div className="copy-clipboard">
+            <p>000000000000000000001</p>
+            <CopyToClipboard onCopy={onCopy} text={state.value}>
+              <img src={copy} width={30} alt="copy-to-clipboard"></img>
+            </CopyToClipboard>
+          </div>
           <p>
-            CBU: <br /> 000000000000000000000 <br /> Alias: <br /> 000000000{' '}
-            <br /> Alias Mercado pago: 000000000 <br /> También dejaremos un
-            cofre para recibir <br /> en la fiesta, como prefieras♥
+            Alias: <br />
+          </p>
+          <div className="copy-clipboard">
+            <p>000000000000000000002</p>
+            <CopyToClipboard onCopy={onCopy2} text={state2.value}>
+            <img src={copy} width={30} alt="copy-to-clipboard"></img>
+            </CopyToClipboard>
+          </div>
+          <p>Alias Mercado pago:</p>
+          <div className="copy-clipboard"> 
+            <p>000000000000000000003</p>
+            <CopyToClipboard onCopy={onCopy3} text={state3.value}>
+            <img src={copy} width={30} alt="copy-to-clipboard"></img>
+            </CopyToClipboard>
+          </div>
+          <p>
+            También dejaremos un cofre para recibir <br /> en la fiesta, como
+            prefieras♥
           </p>
         </div>
       </div>
 
       <div id="dress-code" className="dress-code-section">
+        {/* <img src={flowerTop} className="img-flower-dess" alt="img" /> */}
         <div className="img-dress-code">
-          <img src={iconCool} width={150} alt="img"/>
+          <img src={shoe} width={150} alt="img" />
         </div>
         <div>
           <h4>Dress Code</h4>
@@ -177,10 +327,10 @@ export const Home = () => {
 
       <div id="playlist" className="playlist-section">
         <div className="img-playlist">
-          <img src={playlist} width={200} alt="img"/>
+          <img src={dance} width={100} alt="img" />
         </div>
         <div>
-          <h4>Playlist Spotify</h4>
+          <h4>Los infaltables!</h4>
           <p>
             Queremos divertirnos junto a vos, <br /> por eso esperamos tus
             tenaikenes <br />
@@ -192,16 +342,17 @@ export const Home = () => {
             type="button"
             onClick={(e) => {
               e.preventDefault();
-              window.location.href = 'https://wa.me/message/Z4RYHFSMEJB2C1';
+              window.location.href = "https://wa.me/message/Z4RYHFSMEJB2C1";
             }}
           >
             <i className="fa-brands fa-spotify"></i> Sugerir
           </button>
+          <img src={backgFooter} className="background-footer" alt="background-footer" ></img>
         </div>
         <div className="footer">
           <h4>¡Te esperamos!</h4>
           <div>
-            <span className="brand-letter">J</span>{' '}
+            <span className="brand-letter">J</span>{" "}
             <span className="brand-letter-1">&</span>
             <span className="brand-letter">L</span>
           </div>
@@ -211,6 +362,6 @@ export const Home = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

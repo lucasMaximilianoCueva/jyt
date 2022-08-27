@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  max-height: 2600px;
 }
 
 :root {
@@ -35,4 +36,13 @@ textarea,
 button {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
+}
+
+#root {
+  //background-image: url('./assets/img/TEXTURE-background.jpg');
+  min-height: 500px;
+  // background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

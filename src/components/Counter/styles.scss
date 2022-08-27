@@ -1,6 +1,6 @@
 .counter {
     display: flex;
-    gap: 1rem;
+    z-index: 2;
   
     .counter-item {
       width: 100px;
@@ -9,24 +9,24 @@
       justify-content: center;
       align-items: center;
       border-radius: 0.25rem;
-      background: #faedcd;
+      background: #faedcd00;
   
       span.label {
         font-size: 0.8rem;
-        color: #fefae0;
+        color: #666666a2;
         width: 100%;
         text-transform: uppercase;
         font-weight: 700;
         text-align: center;
         margin-top: 0.1rem;
-        background: #faedcd;
+        background: #faedcd00;
       }
   
       span.value {
         width: 100%;
         padding: 0 0.5rem;
         font-size: 4rem;
-        color: var(--white);
+        color: #666666c3;
         text-align: center;
       }
   
